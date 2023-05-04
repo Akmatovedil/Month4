@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for i in news_list %}
+        <div class="card" style="width: 18rem;margin: 10px">
+            <img
+                    {% if i.image %}
+                        src="{{ i.image.url }}"
+                    {% else %}
+                        src="{% static 'images/unnamed.png' %}"
+                    {% endif %}
+                        class="card-img-top" style="height: 200px;
+        margin-left: 25px; margin-right: 25px; width: 200px">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.title }}</h5>
+                <p class="card-text">{{ i.category.title }}</p>
+                <a href="/news/{{ i.id }}" class="btn btn-primary">More...</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

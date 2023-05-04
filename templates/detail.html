@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h4>Title - {{ news_detail.title }}</h4>
+    <a href="{{ news_detail.link }}">Link - {{ news_detail.link }}</a>
+    <p>Text - {{ news_detail.text }}</p>
+    <p>Date off - {{ news_detail.date_off }}</p>
+    <p>Likes - {{ news_detail.likes }}</p>
+    <a>{% for tag in news_detail.tags.all %}
+        <a href="">{{ tag.title }}</a>
+    {% endfor %}
+    </a>
+    <hr/>
+    <h2>Comments</h2>
+    <div class="form-content" style="margin-top: 20px; padding-bottom: 30px; margin-left: 50px; margin-right: 200px ">
+        <form action="/news/{{ news_detail.id }}/" method="post">
+            {% csrf_token %}
+            <p>
+                <input required type="text" class="form-control"
+                       placeholder="Автор" name="author">
+            </p>
+            <p>
+                <input required type="text" placeholder="Текст" class="form-control" name="text"/>
+            </p>
+            <input type="submit" class="btn btn-success">
+
+        </form>
+    </div>
+    {% for i in comments %}
+        <p>{{ i.text }}</p>
+        <p>{{ i.author }}</p>
+        <p>{{ i.created_at }}</p>
+        <hr>
+
+    {% endfor %}
+
+{% endblock %}
