@@ -19,5 +19,14 @@
             </div>
         </div>
     {% endfor %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link {{ prev_disabled }}" href="/news/?page={{ prev }}">Previous</a></li>
+            {% for count in buttons %}
+            <li class="page-item {% if page == count  %} active {% endif %}"><a class="page-link" href="/news/?page={{ count }}">{{ count }}</a></li>
+            {% endfor %}
+            <li class="page-item"><a class="page-link {{ next_disabled }}" href="/news/?page={{ next }}">Next</a></li>
+        </ul>
+    </nav>
 {% endblock %}
 

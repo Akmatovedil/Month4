@@ -6,6 +6,7 @@ from news.models import News, Comment, Tag, Category
 
 
 class NewsAdmin(admin.ModelAdmin):
+    list_per_page = 3
     list_display = ['id', 'title', 'link', 'likes',
                     'date_off', 'category']
     search_fields = 'title'.split()

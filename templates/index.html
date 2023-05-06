@@ -1,20 +1,9 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block content %}
-    <a href="/">
-        <button>Home Page</button>
-    </a>
-    <h1>Hello World</h1>
     <h2>{{ color }}</h2>
-    {% if number == 'six' %}
-        <h3>6</h3>
-    {% else %}
-        <h3>No number</h3>
-    {% endif %}
+    <h3>{{ number }}</h3>
     {% for i in list %}
-        {% if i != 1 %}
-            <p>{{ i }}</p>
-        {% endif %}
+        <p>{{ i }}</p>
     {% endfor %}
-
-
 {% endblock %}
